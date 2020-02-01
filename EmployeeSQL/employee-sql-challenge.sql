@@ -47,7 +47,6 @@ CREATE TABLE titles(
 	to_date DATE
 );
 
-select*from employees limit 10
 ---------------------------------------------------------
 --QUERIES--
 ---------------------------------------------------------
@@ -55,11 +54,11 @@ select*from employees limit 10
 SELECT e.emp_no, e.last_name, e.first_name, e.gender, s.salary
 FROM employees AS e
 LEFT JOIN salaries AS s
-ON e.emp_no = s.emp_no
+ON e.emp_no = s.emp_no;
 
 --2. List employees who were hired in 1986.
 SELECT * FROM employees
-WHERE hire_date >= '1986-01-01' AND hire_date < '1987-01-01'
+WHERE hire_date >= '1986-01-01' AND hire_date < '1987-01-01';
 
 --3. List the manager of each department with the following information: department number, department name, 
 --   the manager's employee number, last name, first name, and start and end employment dates.
@@ -68,7 +67,7 @@ FROM dept_manager as dm
 	LEFT JOIN departments as d
 	ON dm.dept_no = d.dept_no
 	LEFT JOIN employees as e
-	ON dm.emp_no = e.emp_no
+	ON dm.emp_no = e.emp_no;
 
 --4. List the department of each employee with the following information: employee number, last name, first name, 
 --  and department name.
@@ -77,11 +76,11 @@ FROM dept_emp AS de
 	LEFT JOIN departments AS d
 	ON de.dept_no = d.dept_no 
 	LEFT JOIN employees AS e
-	ON de.emp_no = e.emp_no
+	ON de.emp_no = e.emp_no;
 
 --5. List all employees whose first name is "Hercules" and last names begin with "B."
 SELECT * FROM employees 
-WHERE first_name = 'Hercules' AND last_name LIKE 'B%'
+WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 --6. List all employees in the Sales department, including their employee number, 
 --   last name, first name, and department name.
@@ -101,14 +100,14 @@ FROM dept_emp as de
 	ON de.dept_no = d.dept_no
 	LEFT JOIN employees as e
 	ON de.emp_no = e.emp_no
-	where d.dept_name = 'Sales' or d.dept_name = 'Development'
+	where d.dept_name = 'Sales' or d.dept_name = 'Development';
 
 --8. In descending order, list the frequency count of employee last names, 
 --   i.e., how many employees share each last name.
 SELECT e.last_name, COUNT(e.last_name) AS "Count of Last Name"
 FROM employees AS e
 GROUP BY last_name
-ORDER BY "Count of Last Name" DESC
+ORDER BY "Count of Last Name" DESC;
 
 
 
